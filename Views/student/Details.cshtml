@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/MasterPage.cshtml";
+}
+@model contoso.Models.Student
+<h2>Details</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstMidName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnrollmentDate)
+        </th>
+        <th></th>
+    </tr>
+    
+    <tr>
+        <td>
+             @Html.DisplayFor(model => model.LastName)
+        </td>
+        <td>
+             @Html.DisplayFor(model => model.FirstMidName)
+        </td>
+        <td>
+             @Html.DisplayFor(model => model.EnrollmentDate)
+        </td>
+       
+    </tr>
+    </table>
+    <div class="display-field">
+        <table>
+            <tr>
+                <th>Course Title</th>
+                <th>Grade</th>
+            </tr>
+            @foreach (var item in Model.Enrollments)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grade)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+<p>
+   @* @Html.ActionLink("Edit", "Edit", new { id=Model.StudentID }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>
